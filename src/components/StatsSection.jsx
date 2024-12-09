@@ -41,11 +41,11 @@ function StatsSection() {
       label: "Active Now",
       value: "189",
       avatars: [ 
-        "/public/Images/Ellipse 58.png",
-        "public/Images/Ellipse 59.png",
-        "public/Images/Ellipse 60.png", 
-        "/public/Images/Ellipse 61.png",
-        "/public/Images/Ellipse 62.png",
+        "/Images/Ellipse 58.png",
+        "/Images/Ellipse 59.png",
+        "/Images/Ellipse 60.png", 
+        "/Images/Ellipse 61.png",
+        "/Images/Ellipse 62.png",
       ],
     },
   ];

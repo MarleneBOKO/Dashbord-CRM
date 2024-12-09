@@ -149,7 +149,7 @@ function Sidebar() {
         
         <div className="flex items-center justify-between w-full mt-9">
           <div className="flex items-center justify-center gap-2">
-            <img className="w-[42px] h-[42px] " src="/public/Images/Ellipse 8.png" alt="" />
+            <img className="w-[42px] h-[42px] " src="/Images/Ellipse 8.png" alt="" />
             <div className="flex-col hidden lg:flex md:block">
               <span className="text-sm ">Evano</span>
               <p className="text-xs text-[#757575] ">Project Manager</p>
