@@ -1,0 +1,61 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+function Sidebar() {
+    const [activeMenu, setActiveMenu] = useState("Customers");
+
+    const menuItems = [
+        {
+            label: "Dashboard",
+            icon: (isActive) => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke={isActive ? "#fff" : "#9197B3"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M16.28 13.61C15.15 14.74 13.53 15.09 12.1 14.64L9.51001 17.22C9.33001 17.41 8.96001 17.53 8.69001 17.49L7.49001 17.33C7.09001 17.28 6.73001 16.9 6.67001 16.51L6.51001 15.31C6.47001 15.05 6.60001 14.68 6.78001 14.49L9.36001 11.91C8.92001 10.48 9.26001 8.86001 10.39 7.73001C12.01 6.11001 14.65 6.11001 16.28 7.73001C17.9 9.34001 17.9 11.98 16.28 13.61Z" stroke={isActive ? "#fff" : "#9197B3"} strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            ),
+            showChevron: false
+        },
+        {
+            label: "Product",
+            icon: (isActive) => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 22.75H9C3.57 22.75 1.25 20.43 1.25 15V9C1.25 3.57 3.57 1.25 9 1.25H15C20.43 1.25 22.75 3.57 22.75 9V15C22.75 20.43 20.43 22.75 15 22.75ZM9 2.75C4.39 2.75 2.75 4.39 2.75 9V15C2.75 19.61 4.39 21.25 9 21.25H15C19.61 21.25 21.25 19.61 21.25 15V9C21.25 4.39 19.61 2.75 15 2.75H9Z" fill={isActive ? "#fff" : "#9197B3"}/>
+                </svg>
+            ),
+            path: "/product",
+            showChevron: true
+        },
+        {
+            label: "Customers",
+            icon: (isActive) => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15.0006 22.7498H9.00063C7.68063 22.7498 6.58063 22.6198 5.65063 22.3398C5.31063 22.2398 5.09063 21.9098 5.11063 21.5598C5.36063 18.5698 8.39063 16.2197 12.0006 16.2197C15.6106 16.2197 18.6306 18.5598 18.8906 21.5598C18.9206 21.9198 18.7006 22.2398 18.3506 22.3398C17.4206 22.6198 16.3206 22.7498 15.0006 22.7498ZM6.72063 21.0598C7.38063 21.1898 8.13063 21.2498 9.00063 21.2498H15.0006C15.8706 21.2498 16.6206 21.1898 17.2806 21.0598C16.7506 19.1398 14.5606 17.7197 12.0006 17.7197C9.44063 17.7197 7.25063 19.1398 6.72063 21.0598Z" fill={isActive ? "#fff" : "#9197B3"}/>
+                </svg>
+            ),
+            path: "/customers",
+            showChevron: true
+        }
+    ];
+
+    return (
+        <div className="sidebar bg-gray-800 text-white w-64 p-4">
+            <ul className="space-y-4">
+                {menuItems.map((item, index) => (
+                    <li key={index} className={`flex items-center space-x-3 ${activeMenu === item.label ? "bg-blue-500" : ""}`}>
+                        <Link to={item.path || "#"} onClick={() => setActiveMenu(item.label)} className="flex items-center w-full py-2 px-3 rounded-md hover:bg-blue-700">
+                            {item.icon(activeMenu === item.label)}
+                            <span className="ml-2">{item.label}</span>
+                            {item.showChevron && (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 4L10 8L6 12" stroke={activeMenu === item.label ? "#fff" : "#9197B3"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            )}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default Sidebar;
