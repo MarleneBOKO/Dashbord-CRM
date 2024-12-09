@@ -107,16 +107,12 @@ function Sidebar() {
                 activeMenu === item.label ? "bg-[#5932EA] text-white rounded-[8px] " : ""
               }`}
             >
-              <div className="flex gap-2">
-                <span>{item.icon(activeMenu === item .label)}</span>
-                <span
-                  className={`text-sm hidden lg:flex md:flex lg:items-center ${
-                    activeMenu === item.label ? "text-white" : "text-[#9197B3]"
-                  }`}
-                >
-                  {item.label}
-                </span>
-              </div>
+              <Link to={item.path} onClick={() => setActiveMenu(item.label)} className="flex w-full gap-2">
+                  <span>{item.icon(activeMenu === item.label)}</span>
+                  <span className={`text-sm hidden lg:flex md:flex lg:items-center ${activeMenu === item.label ? "text-white" : "text-[#9197B3]"}`}>
+                    {item.label}
+                  </span>
+                </Link>
               {item.showChevron && (
                 <svg className="hidden lg:block md:block"
                   xmlns="http://www.w3.org/2000/svg"
